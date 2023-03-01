@@ -6,9 +6,40 @@ import { ListAll } from "../controllers/UserController.js";
 
 const routes = new Router();
 
+/**
+ * @api {get} / verification
+ * @apiGroup Sistema
+ *
+ * @apiSuccess {String} Server Status - Online
+ * 
+ * @apiSuccessExample {json} Sucesso
+ *    HTTP/1.1 200 OK
+ *    {
+ *      "msg": "Server Status - Online"
+ *    }
+ *
+ */
+
 routes.get('/', (req, res) => {
   res.status(200).send({ "msg": 'Server Status - Online' });
 });
+
+/**
+ * @api {post} /user Create User
+ * @apiGroup Sistema
+ *
+ * @apiSuccess {String}  Criado com sucesso
+ * 
+ * @apiSuccessExample {json} Sucesso
+ *    HTTP/1.1 201 OK
+ *     {
+ *     mensagem: {
+ *       "name": name,
+ *       "email": email,
+ *     }
+ *   }
+ *
+ */
 
 routes.post('/user', async (req, res, next) => {
   await authMiddleware(req, res, next, Create(req, res));
