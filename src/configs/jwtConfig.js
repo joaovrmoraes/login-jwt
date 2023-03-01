@@ -1,0 +1,5 @@
+
+export const config = {
+  "secret": "136629a1638bb491549b13632c2e33b4",
+  "expiration": 86400
+}
